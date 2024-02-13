@@ -17,18 +17,16 @@ import requests
 # print(f"Current  pyzmq version is {zmq.__version__}")
 
 # Google API key
-load_dotenv()
+load_dotenv(override=True)
 API_KEY = os.getenv('API_KEY')
 include_offices = {}
-url = 'https://www.googleapis.com/civicinfo/v2/representatives'
-
 
 context = zmq.Context()
 socket = context.socket(zmq.REP)
-socket.bind("tcp://*:2121")
+socket.bind("tcp://*:21213")
 
-
-REPS_URL = "https://www.googleapis.com/civicinfo/v2/representatives?key="
+url = 'https://www.googleapis.com/civicinfo/v2/representatives'
+#REPS_URL = "https://www.googleapis.com/civicinfo/v2/representatives?key="
 
 
 VALID_LEVELS = ["administrativeArea1", "administrativeArea2", "country",
@@ -52,7 +50,7 @@ class Offical():
         self.party = party
     
     def get_contact_info(self):
-        return (self.title + ' ' + self.name  + ' ' + self.phone + ' ' + self.address + ' ' + self.party + ' ' + self.website)
+        return (self.title + ' | ' + self.name  + ' | ' + self.phone + ' | ' + self.address + ' | ' + self.party + ' | ' + self.website)
 
 
 def format_data(json_object):
@@ -65,11 +63,8 @@ def sort_officals(data, officals_list):
     counter = 0
     #Only works if levels == 'country':
     if 'offices' in data:
-        #print(data)
-        title = data
-        print(title)
         senator_counter = False
-        print('test\n')
+        #print('test\n')
         for x in range(len(data['officials'])):
             # print(data['officials'][x]['name'])
             # print(data['officials'][x]['phones'][0])
@@ -123,6 +118,7 @@ while True:
     #Send reply to client
     if r.status_code != 200:
         response_string = "An error occured, please try a different address"
+        print(r.text)
 
     if r.status_code == 200:
         response_string = ''
@@ -133,4 +129,4 @@ while True:
 
     #print(response_string)
     #Send reply to client
-    socket.send_string(f"Your response is as follows: {response_string}")
+    socket.send_string(f"{response_string}")

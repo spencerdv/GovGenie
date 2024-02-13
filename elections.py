@@ -1,11 +1,13 @@
-import requests
+import requests, os
+from dotenv import load_dotenv
 
 ELECTIONS_URL = "https://www.googleapis.com/civicinfo/v2/elections"
 
 VOTER_INFO_URL = "https://www.googleapis.com/civicinfo/v2/voterinfo"
 
-
-API_KEY = 'AIzaSyD7UHjJIyPZzYUlGMrR858pk75hggjchMc'
+# Google API key
+load_dotenv()
+API_KEY = os.getenv('API_KEY')
 
 def elections(api_key):
     """Queries the electionQuery endpoint with the provided API key"""
