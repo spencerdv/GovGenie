@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head %}
+    <title>Home</title>
+    {% endblock %}
+</head>
+<body>
+    <div>   
+        <h1>GovGenie</h1>
+    {% block content %}
+    <p>Welcome to {{website_name}}</p>
+    <p>Please enter an address you would like to use to search for elected officals: </p>
+    <form action="/results.html">
+        <label for="address">Address:</label><br>
+        <input type="text" id="address" name="address">
+        <input type="submit" value="Submit">
+    </form>
+    </div>
+    <script 
+        type="text/javascript" 
+        src="{{ url_for('static', filename='index.js')}}">
+    </script>
+    {% endblock %}
+</body>
+<footer>
+<p>Created by S. Verhagen 2024</p>
+</footer>
+</html>
