@@ -11,6 +11,23 @@ print("Hello and welcome to GovGenie\n")
 
 print("Please enter an address to obtain information regarding the elected officals for that area. You may quit by entering 'quit'.\n")
 
+def sort_by_party(message, officals_list):
+    print("\nPlease enter 'R' to obtain the Republicans who represent this address. \nEnter 'D' to obtain the Democrats who represent this address.")
+    party_input = input()
+    if party_input == 'R' or party_input == 'r':
+        print("\nHere are the Republicans who federally represent this address:\n")
+        for offical in officals_list:
+            if 'Republican' in offical:
+                print(offical)
+    if party_input == 'D' or party_input == 'd':
+        print("\nHere are the Democrats who federally represent this address:\n")
+        for offical in officals_list:
+            if 'Democrat' in offical:
+                print(offical + '\n')
+
+    print("\nEnter 'yes' if you would like to see your unfiltered results again.")
+    if input() == 'yes':
+        print('\n' + message)
 
 while True:
     
@@ -49,27 +66,12 @@ while True:
         officals_list = new_message.split('\n\n')
 
 
-        if new_message != "An error occured, please try a different address":
+        if new_message != "An error occured, please try a different address.":
             # Party filter functionality
-            print("Please enter 'yes' if you would you like to filter your results by party")
+            print("Enter 'yes' if you would like to filter your results by party.")
             party_input = input()
-            if party_input == 'yes' or party_input == 'y':
-                print("\nPlease enter 'R' to obtain the Republicans who represent this address. \nEnter 'D' to obtain the Democrats who represent this address.")
-                party_input = input()
-                if party_input == 'R' or party_input == 'r':
-                    print("\nHere are the Republicans who federally represent this address:\n")
-                    for offical in officals_list:
-                        if 'Republican' in offical:
-                            print(offical)
-                if party_input == 'D' or party_input == 'd':
-                    print("\nHere are the Democrats who federally represent this address:\n")
-                    for offical in officals_list:
-                        if 'Democrat' in offical:
-                            print(offical + '\n')
-            
-                print("Enter 'yes' if you would like to see your unfiltered results again.")
-                if input() == 'yes':
-                    print('\n' + new_message)
+            if party_input == 'yes':
+                sort_by_party(new_message, officals_list)
 
         print("\nYou may enter another address if you would like to search again.  You may quit by entering 'quit'.")
 

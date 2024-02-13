@@ -29,16 +29,19 @@ url = 'https://www.googleapis.com/civicinfo/v2/representatives'
 #REPS_URL = "https://www.googleapis.com/civicinfo/v2/representatives?key="
 
 
-VALID_LEVELS = ["administrativeArea1", "administrativeArea2", "country",
-                "international", "locality", "regional", "special", "subLocality1", "subLocality2"]
+VALID_LEVELS = ["country", "administrativeArea1", "administrativeArea2", "locality"]
+
+# "Regional, locality, international, subLocality1, subLocality2" are valid levels but return nothing
+# adminstriativeArea1 does state officals and college trustees
+# adminstriativeArea2 does covers county officals
 
 VALID_ROLES = ["deputyHeadOfGovernment", "executiveCouncil", "governmentOfficer", "judge",
                "headOfGovernment", "headOfState", "highestCourtJudge", "legislatorLowerBody",
                "legislatorUpperBody", "schoolBoard", "specialPurposeOfficer"]
 
 
+
 officials = []
-index = 0
 
 class Offical():
     def __init__(self, title, name, phone, address, website, party):
@@ -81,8 +84,6 @@ def sort_officals(data, officals_list):
             counter += 1
         
 
-
-
 def representative_info_by_address(api_key, address, include_offices=True, levels=None, roles=None):
     """Queries the representativeInfoByAddress endpoint with provided parameters"""
 
@@ -117,8 +118,8 @@ while True:
 
     #Send reply to client
     if r.status_code != 200:
-        response_string = "An error occured, please try a different address"
-        print(r.text)
+        response_string = "An error occured, please try a different address."
+        #print(r.text)
 
     if r.status_code == 200:
         response_string = ''
