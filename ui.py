@@ -30,7 +30,6 @@ def sort_by_party(message, officals_list):
         print('\n' + message)
 
 while True:
-    
     user_input = input()
     address = user_input
 
@@ -52,6 +51,19 @@ while True:
         time.sleep(.5)
         print('..')
         time.sleep(.5)
+        '''
+        State/Federal functionality
+        print('Please enter "all" if you would like all of your elected officals, "state" if you want your state officals, or "federal" if you would like your federal officals.')
+        level_input = input()
+        level_input = level_input.lower()
+        while level_input != 'all' or level_input != 'federal' or level_input != 'state':
+            print("\nYour input was not valid, please enter 'federal', 'state', or 'all'.")
+            print("You may enter 'quit' to quit.")
+            level_input = input()
+            if level_input == 'quit':
+                break
+        socket.send_string(level_input)
+        '''
         print('...')
         time.sleep(.5)
         print('..')
