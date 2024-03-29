@@ -87,6 +87,4 @@ while True:
 
         print("\nYou may enter another address if you would like to search again.  You may quit by entering 'quit'.")
 
-# test
-
 print('\n\nThank you for using GovGeni.\n')
