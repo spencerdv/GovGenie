@@ -9,9 +9,15 @@ api = Api(app)
 
 # Validates user input to ensure correct arguments were given
 address_get_args = reqparse.RequestParser()
-address_get_args.add_argument("street", type=str, help="You did not provide a street address", required=True)
-address_get_args.add_argument("city", type=str, help="You did not provide a city", required=True)
-address_get_args.add_argument("state", type=str, help="You did not provide a state", required=True)
+address_get_args.add_argument("street", type=str,
+                              help="You did not provide a street address",
+                              required=True)
+address_get_args.add_argument("city", type=str,
+                              help="You did not provide a city",
+                              required=True)
+address_get_args.add_argument("state", type=str,
+                              help="You did not provide a state",
+                              required=True)
 
 address = {"street": "street", "city": "city", "state": "state"}
 
@@ -46,7 +52,8 @@ class Elected(Resource):
 
 
 # Adds classes to the API
-# When sending a get request to "/electeds, we reiceved back "[address]" information
+# When sending a get request to "/electeds, we reiceved back "[address]"
+# information
 api.add_resource(Address, "/results/<string:address>")
 
 api.add_resource(Elected, "/congress/<int:elected_id>")

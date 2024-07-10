@@ -28,14 +28,16 @@ url = 'https://www.googleapis.com/civicinfo/v2/representatives'
 # REPS_URL = "https://www.googleapis.com/civicinfo/v2/representatives?key="
 
 
-VALID_LEVELS = ["country", "administrativeArea1", "administrativeArea2", "locality"]
+VALID_LEVELS = ["country", "administrativeArea1", "administrativeArea2",
+                "locality"]
 
 # "Regional, locality, international, subLocality1, subLocality2" are valid levels but return nothing
 # adminstriativeArea1 does state officals and college trustees
 # adminstriativeArea2 does covers county officals
 
-VALID_ROLES = ["deputyHeadOfGovernment", "executiveCouncil", "governmentOfficer", "judge",
-               "headOfGovernment", "headOfState", "highestCourtJudge", "legislatorLowerBody",
+VALID_ROLES = ["deputyHeadOfGovernment", "executiveCouncil",
+               "governmentOfficer", "judge", "headOfGovernment",
+               "headOfState", "highestCourtJudge", "legislatorLowerBody",
                "legislatorUpperBody", "schoolBoard", "specialPurposeOfficer"]
 
 

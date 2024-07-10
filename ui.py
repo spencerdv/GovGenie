@@ -8,14 +8,18 @@ import time
 # print(f"Current  pyzmq version is {zmq.__version__}")
 
 print("Hello and welcome to GovGenie\n")
-print("Please enter an address to obtain information regarding the elected officals for that area. You may quit by entering 'quit'.\n")
+print("Please enter an address to obtain information regarding the elected "
+      "officals for that area. You may quit by entering 'quit'.\n")
 
 
 def sort_by_party(message, officals_list):
-    print("\nPlease enter 'R' to obtain the Republicans who represent this address. \nEnter 'D' to obtain the Democrats who represent this address.")
+    print("\nPlease enter 'R' to obtain the Republicans who represent this "
+          "address. \nEnter 'D' to obtain the Democrats who represent this "
+          "address.")
     party_input = input()
     if party_input == 'R' or party_input == 'r':
-        print("\nHere are the Republicans who federally represent this address:\n")
+        print("\nHere are the Republicans who federally represent this "
+              "address:\n")
         for offical in officals_list:
             if 'Republican' in offical:
                 print(offical)
@@ -25,7 +29,8 @@ def sort_by_party(message, officals_list):
             if 'Democrat' in offical:
                 print(offical + '\n')
 
-    print("\nEnter 'yes' if you would like to see your unfiltered results again.")
+    print("\nEnter 'yes' if you would like to see your unfiltered results"
+          " again.")
     if input() == 'yes':
         print('\n' + message)
 
@@ -54,7 +59,9 @@ while True:
         time.sleep(.5)
         '''
         State/Federal functionality
-        print('Please enter "all" if you would like all of your elected officals, "state" if you want your state officals, or "federal" if you would like your federal officals.')
+        print('Please enter "all" if you would like all of your elected '
+        ' officals, "state" if you want your state officals, or "federal"'
+        ' if you would like your federal officals.')
         level_input = input()
         level_input = level_input.lower()
         while level_input != 'all' or level_input != 'federal' or level_input != 'state':
@@ -80,11 +87,13 @@ while True:
 
         if new_message != "An error occured, please try a different address.":
             # Party filter functionality
-            print("Enter 'yes' if you would like to filter your results by party.")
+            print("Enter 'yes' if you would like to filter your results "
+                  "by party.")
             party_input = input()
             if party_input == 'yes':
                 sort_by_party(new_message, officals_list)
 
-        print("\nYou may enter another address if you would like to search again.  You may quit by entering 'quit'.")
+        print("\nYou may enter another address if you would like to search"
+              " again. You may quit by entering 'quit'.")
 
 print('\n\nThank you for using GovGeni.\n')
