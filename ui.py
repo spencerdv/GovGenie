@@ -1,15 +1,15 @@
-## Provides interface and recieves address information from the user 
+# Provides interface and recieves address information from the user
 
-import zmq, time
+import zmq
+import time
 
 # For testing any bugs with ZeroMQ
 # print(f"Current libzmq version is {zmq.zmq_version()}")
 # print(f"Current  pyzmq version is {zmq.__version__}")
 
-
 print("Hello and welcome to GovGenie\n")
-
 print("Please enter an address to obtain information regarding the elected officals for that area. You may quit by entering 'quit'.\n")
+
 
 def sort_by_party(message, officals_list):
     print("\nPlease enter 'R' to obtain the Republicans who represent this address. \nEnter 'D' to obtain the Democrats who represent this address.")
@@ -29,6 +29,7 @@ def sort_by_party(message, officals_list):
     if input() == 'yes':
         print('\n' + message)
 
+
 while True:
     user_input = input()
     address = user_input
@@ -44,8 +45,8 @@ while True:
     socket.connect("tcp://localhost:21213")
 
     # Do 10 requests, waiting each time for a response
-    for request in range(1,2):
-        print(f"Sending request . . .")
+    for request in range(1, 2):
+        print("Sending request . . .")
         socket.send_string(user_input)
         print('.')
         time.sleep(.5)
@@ -76,7 +77,6 @@ while True:
         new_message = message.decode('utf-8')
         print(f"{new_message}\n")
         officals_list = new_message.split('\n\n')
-
 
         if new_message != "An error occured, please try a different address.":
             # Party filter functionality
