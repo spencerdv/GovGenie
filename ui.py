@@ -18,13 +18,13 @@ def sort_by_party(message, officals_list):
           "address.")
     party_input = input()
     if party_input == 'R' or party_input == 'r':
-        print("\nHere are the Republicans who federally represent this "
+        print("\nHere are the Republicans who represent this "
               "address:\n")
         for offical in officals_list:
             if 'Republican' in offical:
                 print(offical)
     if party_input == 'D' or party_input == 'd':
-        print("\nHere are the Democrats who federally represent this address:\n")
+        print("\nHere are the Democrats who represent this address:\n")
         for offical in officals_list:
             if 'Democrat' in offical:
                 print(offical + '\n')
@@ -80,7 +80,7 @@ while True:
         time.sleep(.5)
         # Get reply (recived as bytes object)
         message = socket.recv()
-        print(f"\nHere are the federally elected officals for {address}:\n")
+        print(f"\nHere are the elected officals for {address}:\n")
         new_message = message.decode('utf-8')
         print(f"{new_message}\n")
         officals_list = new_message.split('\n\n')
